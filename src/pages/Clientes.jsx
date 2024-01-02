@@ -103,9 +103,9 @@ const Cliente = () => {
 
     return (
         <Container children={
-            <div>
+            <div className="p-6">
                 {isLoading &&  <LoadingIndicator />}
-                <div className="">
+                <div className="mb-4">
                     <p className="text-2xl font-bold">Clientes</p>
                 </div>
                 <div className="flex space-x-4 mb-4">
@@ -115,7 +115,7 @@ const Cliente = () => {
                         Criar Cliente
                     </button>
                 </div>
-                <div className="overflow-auto max-h-96">
+                <div className="overflow-auto max-h-96 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
@@ -184,7 +184,7 @@ const Cliente = () => {
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
+                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
                                             type="text" 
                                             placeholder="Digite o nome:"
                                             onChange={(event) => handleEditClient(event)} 

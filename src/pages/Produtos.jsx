@@ -173,7 +173,7 @@ const Produtos = () => {
                                     </Modal.Footer>
                                 </div>
                             :
-                            isModalVisible === "EditarUsuario" ?
+                            isModalVisible === "EditarProduto" ?
                                 <div>
                                     <Modal.Header>
                                         <Modal.Title className="text-2xl font-bold">
