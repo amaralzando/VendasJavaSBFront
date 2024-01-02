@@ -15,7 +15,7 @@ const api = axios.create({
     headers: {
         'Accept': '*/*',
         'Authorization':
-             'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMzAxNDMxMX0.HXR-qBK6_WoGo9YflH41ulyu6hxfpD_mMLRpWVbEgP0Rkok0ZYRdNvjm3ka6wb5vt-x_gCmIVAXbaguz1-Uufw',
+             'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwNDMwODEzNX0.FR-Du4YMLFiWQG5gbOfhKom0TH8U3Wolw7lLUP3w-VG5OJeMXneMOYpEYkEUFQXan-8idGrCwCG1dRnpOLXTcg',
     }
 });
 
