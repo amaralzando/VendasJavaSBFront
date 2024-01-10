@@ -4,6 +4,8 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Container from "../components/Container";
 import { Button, Modal } from "react-bootstrap";
 
+import FotoTeste from "../assets/FotoTeste.jpg";
+
 const Produtos = () => {
     const [isModalVisible, setIsModalVisible] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
@@ -112,33 +114,18 @@ const Produtos = () => {
                         Criar Produto
                     </button>
                 </div>
-                <div className="overflow-auto max-h-96">
-                    <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
-                            <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Descricao</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Preco</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"></th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider"></th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                            {produtosAll.map((produto) => (
-                                <tr key={produto.id}>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{produto.descricao}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{produto.preco}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" 
-                                            onClick={ () => handleModalEditar(produto)}>Edit</button>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
-                                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" 
-                                            onClick={() => handleDeleteProduct(produto.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="grid grid-cols-4 gap-5">
+                    {produtosAll.map((produto) => (
+                        <div key={produto.id} 
+                            className="flex flex-col justify-between w-40 border border-black items-center">
+                                <img src={FotoTeste} alt="Imagem do produto" className="w-full h-auto" />
+                                <div className="flex flex-col items-center">
+                                    <h2 className="text-18 font-bold">{produto.descricao}</h2>
+                                    <p className="text-16">{produto.preco}</p>
+                                    <button>Comprar</button>
+                                </div>
+                        </div>
+                    ))}
                 </div>
                 <Modal
                     size="lg"
@@ -154,6 +141,14 @@ const Produtos = () => {
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
+                                        <img src={FotoTeste} alt="Imagem do produto" className="w-40" />
+                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
+                                            type="file" 
+                                            placeholder="Digite o Nome:"
+                                            //onChange={(event) => handleEditPostProduct(event)} 
+                                            name="descricao" 
+                                            //value={FotoTeste}
+                                            />
                                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
                                             type="text" 
                                             placeholder="Digite o Nome:"
@@ -181,7 +176,15 @@ const Produtos = () => {
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
+                                        <img src={FotoTeste} alt="Imagem do produto" className="w-40" />
+                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
+                                            type="file" 
+                                            placeholder="Digite o Nome:"
+                                            //onChange={(event) => handleEditPostProduct(event)} 
+                                            name="descricao" 
+                                            //value={FotoTeste}
+                                            />
+                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
                                             type="text" 
                                             placeholder="Digite o Nome:"
                                             onChange={(event) => handleEditProduct(event)} 
