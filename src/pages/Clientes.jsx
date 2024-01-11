@@ -103,7 +103,7 @@ const Cliente = () => {
 
     return (
         <Container children={
-            <div className="p-6">
+            <div>
                 {isLoading &&  <LoadingIndicator />}
                 <div className="mb-4">
                     <p className="text-2xl font-bold">Clientes</p>

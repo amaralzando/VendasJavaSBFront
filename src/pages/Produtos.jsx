@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Api from "../services/Api";
+import Api from "../services/ApiProduto";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Container from "../components/Container";
 import { Button, Modal } from "react-bootstrap";
@@ -15,30 +15,14 @@ const Produtos = () => {
     
     useEffect(() => {
         setIsLoading(true)
-        Api.get("produtos")
-            .then(res => {
-                setProdutosAll(res.data)
-            }).catch((err) => {
-                console.log(err);
-            }).finally(() => {
-                setIsLoading(false)
-            });
+        Api.listarProdutosGetAll()
+            .then((res) => setProdutosAll(res.data))
+            .finally(() => setIsLoading(false))
     }, []);
 
-    const handleDeleteProduct = (id) => {
-        setIsLoading(true)
-        Api.delete(`produtos/${id}`)
-            .then(res => {
-                if (res.status === 200) {
-                    setProdutosAll((prevProducts) =>
-                        prevProducts.filter((Product) => Product.id !== id)
-                    );
-                }
-            }).catch((err) => {
-                console.log(err);
-            }).finally(() => {
-                setIsLoading(false)
-            });
+    const handleModalProduct = (produto) => {
+        setPutProdutos(produto)
+        setIsModalVisible("EditarProduto")
     }
 
     const handleEditPostProduct = (event) => {
@@ -59,44 +43,43 @@ const Produtos = () => {
 
     const handlePostProduct = () => {
         setIsLoading(true)
-        Api.post("produtos", postProdutos)
-        .then(res => {
-            setProdutosAll([...produtosAll, res.data]);
-        }).catch((err) => {
-                console.log(err);
+        Api.cadastrarProduto(postProdutos)
+            .then(res => {
+                setProdutosAll([...produtosAll, res.data]);
             }).finally(() => {
                 setIsLoading(false)
                 setIsModalVisible(null)
                 setPostProdutos(null)
             });
-    }
-
-    const handleModalEditar = (produto) => {
-        setPutProdutos(produto)
-        setIsModalVisible("EditarProduto")
-    }
+    }   
 
     const handlePutProduct = () => {
         setIsLoading(true)
-        console.log(putProdutos)
-        Api.put(`produtos/${putProdutos.id}`, {
-            descricao: putProdutos.descricao,
-            preco: putProdutos.preco
-        })
+        debugger
+        Api.cadastrarProduto(putProdutos)
         .then(res => {
-            if (res.status === 200) {
+            setProdutosAll((prevProducts) =>
+                prevProducts.map((product) =>
+                    product.id === putProdutos.id ? { ...product, ...putProdutos } : product
+                )
+            );
+        }).finally(() => {
+            setIsLoading(false)
+            setPutProdutos(null)
+            setIsModalVisible(null)
+        });
+    }
+
+    const handleDeleteProduct = (id) => {
+        setIsLoading(true)
+        Api.deleteProduto(id)
+            .then(res => {
                 setProdutosAll((prevProducts) =>
-                    prevProducts.map((product) =>
-                        product.id === putProdutos.id ? { ...product, ...putProdutos } : product
-                    )
+                    prevProducts.filter((Product) => Product.id !== id)
                 );
-                setIsModalVisible(null);
-            }
-        }).catch((err) => {
-                console.log(err);
             }).finally(() => {
                 setIsLoading(false)
-                setPutProdutos(null)
+                setIsModalVisible(null)
             });
     }
 
@@ -104,7 +87,7 @@ const Produtos = () => {
         <Container children={
             <div>
                 {isLoading &&  <LoadingIndicator />}
-                <div className="">
+                <div className="mb-4">
                     <p className="text-2xl font-bold">Produtos</p>
                 </div>
                 <div className="flex space-x-4 mb-4">
@@ -114,19 +97,21 @@ const Produtos = () => {
                         Criar Produto
                     </button>
                 </div>
-                <div className="grid grid-cols-4 gap-5">
+                <div className="grid grid-cols-5 gap-5">
                     {produtosAll.map((produto) => (
                         <div key={produto.id} 
-                            className="flex flex-col justify-between w-40 border border-black items-center">
-                                <img src={FotoTeste} alt="Imagem do produto" className="w-full h-auto" />
-                                <div className="flex flex-col items-center">
-                                    <h2 className="text-18 font-bold">{produto.descricao}</h2>
-                                    <p className="text-16">{produto.preco}</p>
-                                    <button>Comprar</button>
+                            className="flex flex-col justify-between w-52 border border-black items-center p-2 bg-white cursor-pointer"
+                            onClick={() => handleModalProduct(produto)}
+                            >
+                                <img src={FotoTeste} alt="Imagem do produto" className="w-full h-auto mb-4" />
+                                <div className="text-center space-y-1">
+                                    <h2 className="text-lg font-bold">{produto.descricao}</h2>
+                                    <p className="text-2xl">{produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                                 </div>
                         </div>
                     ))}
                 </div>
+
                 <Modal
                     size="lg"
                     centered
@@ -197,9 +182,12 @@ const Produtos = () => {
                                             name="preco" 
                                             value={putProdutos.preco}/>
                                     </Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={() => setIsModalVisible(null)}>Fechar</Button>
-                                        <Button variant="primary" onClick={() => handlePutProduct()}>Salvar</Button>
+                                    <Modal.Footer className="flex justify-between">
+                                        <Button variant="danger" onClick={() => handleDeleteProduct(putProdutos.id)}>Deletar</Button>
+                                        <div className="space-x-2">
+                                            <Button variant="secondary" onClick={() => setIsModalVisible(null)}>Fechar</Button>
+                                            <Button variant="primary" onClick={() => handlePutProduct()}>Salvar</Button>
+                                        </div>
                                     </Modal.Footer>
                                 </div>
                                 :
