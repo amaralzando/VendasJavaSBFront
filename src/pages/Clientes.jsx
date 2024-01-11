@@ -153,7 +153,7 @@ const Cliente = () => {
                                 <div>
                                     <Modal.Header>
                                         <Modal.Title className="text-2xl font-bold">
-                                            Criar Produto
+                                            Criar Cliente
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
@@ -180,11 +180,11 @@ const Cliente = () => {
                                 <div>
                                     <Modal.Header>
                                         <Modal.Title className="text-2xl font-bold">
-                                            Editar Produto
+                                            Editar Cliente
                                         </Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
+                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" 
                                             type="text" 
                                             placeholder="Digite o nome:"
                                             onChange={(event) => handleEditClient(event)} 
