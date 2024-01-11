@@ -4,7 +4,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Container from "../components/Container";
 import { Button, Modal } from "react-bootstrap";
 
-import FotoTeste from "../assets/FotoTeste.jpg";
+import FotoTeste from "../assets/png/FotoTeste.jpg";
 
 const Produtos = () => {
     const [isModalVisible, setIsModalVisible] = useState(null)
