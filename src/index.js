@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Cliente from './pages/Clientes';
 import Pedido from './pages/Pedidos';
 import Produtos from './pages/Produtos';
+import Loja from './pages/Loja';
 
 
 // localhost:8080/blablabla
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
       {
         path: "/produtos",
         element: <Produtos/>
-      }
+      },
+      {
+        path: "/loja",
+        element: <Loja/>
+      },
     ],
   },
 ]);

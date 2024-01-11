@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/png/logo.png";
 
 export default function Layout() {
     return (
@@ -13,11 +13,12 @@ export default function Layout() {
                 <nav className="flex flex-row justify-center space-x-5 text-xl ml-auto">
                     <Link className="hover:bg-blue-500 p-2 rounded-xl font-bold" to="/clientes">Clientes</Link>
                     <Link className="hover:bg-blue-500 p-2 rounded-xl font-bold" to="/produtos">Produtos</Link>      
+                    <Link className="hover:bg-blue-500 p-2 rounded-xl font-bold" to="/loja">Loja</Link>
                     <Link className="hover:bg-blue-500 p-2 rounded-xl font-bold" to="/pedidos">Pedidos</Link>
                 </nav> 
             </header>
             {/* ----------------Outlet----------------------- */}
-            <main className="flex-grow bg-pink-50"> 
+            <main className="flex-grow bg-white"> 
                 <Outlet /> 
             </main>
             {/* ----------------Footer------------------------- */}
