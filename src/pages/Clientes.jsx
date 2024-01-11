@@ -3,6 +3,7 @@ import Api from "../services/Api";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Container from "../components/Container";
 import { Button, Modal } from "react-bootstrap";
+
 const Cliente = () => {
     const [isModalVisible, setIsModalVisible] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
@@ -104,7 +105,7 @@ const Cliente = () => {
         <Container children={
             <div>
                 {isLoading &&  <LoadingIndicator />}
-                <div className="">
+                <div className="mb-4">
                     <p className="text-2xl font-bold">Clientes</p>
                 </div>
                 <div className="flex space-x-4 mb-4">
@@ -114,7 +115,7 @@ const Cliente = () => {
                         Criar Cliente
                     </button>
                 </div>
-                <div className="overflow-auto max-h-96">
+                <div className="min-h-2/3">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>

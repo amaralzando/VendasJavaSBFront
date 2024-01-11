@@ -13,9 +13,9 @@ import axios from "axios";
 const api = axios.create({
     baseURL: "http://localhost:8080/api/",
     headers: {
-        "Content-Type": "application/json",
-        "Authorization": 
-            "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwNDI0MDE3MH0.v-PbQhgXlGYgyvu608pd9qeQOkUv_QEKGA9IQ0Cl-0NlfcLlPYRx_uUv1B6KQLSsgO3t9oYsIS81GAE4RgfbNQ"
+        'Accept': '*/*',
+        'Authorization':
+             'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwNTA2MTg2N30.1XkgjJeKD_kAjgIFI334iO3-jh-_8qBzM6wZrbgTXT9LkO3ykQQWbQFKVWiDBQPZe18FZ5Trzs1EWQ1QB3ikIg',
     }
 });
 

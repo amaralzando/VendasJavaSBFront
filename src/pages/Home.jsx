@@ -1,10 +1,11 @@
 import React from "react";
+import HomePNG from "../assets/Black and White Bold Trade and Investments Youtube Banner.png";
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
-            <p>This is the home page</p>
+            <img className="h-[83.33%] w-full object-cover"
+                src={HomePNG} alt="Logo" />
         </div>
     );
 }
