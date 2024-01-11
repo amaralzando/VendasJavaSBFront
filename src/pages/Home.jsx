@@ -1,5 +1,5 @@
 import React from "react";
-import HomePNG from "../assets/Black and White Bold Trade and Investments Youtube Banner.png";
+import HomePNG from "../assets/png/Black and White Bold Trade and Investments Youtube Banner.png";
 
 const Home = () => {
     return (
