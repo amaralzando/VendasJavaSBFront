@@ -103,7 +103,7 @@ const Cliente = () => {
 
     return (
         <Container children={
-            <div className="p-6">
+            <div>
                 {isLoading &&  <LoadingIndicator />}
                 <div className="mb-4">
                     <p className="text-2xl font-bold">Clientes</p>
@@ -115,7 +115,7 @@ const Cliente = () => {
                         Criar Cliente
                     </button>
                 </div>
-                <div className="overflow-auto max-h-96 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100">
+                <div className="min-h-2/3">
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
